@@ -8,17 +8,25 @@ import cmd
 # import json
 
 class HBNBCommand(cmd.Cmd):
+    """
+    Custom console class
+    """
 
     prompt = '(hbnb)'
     def do_EOF(self, line):
-        """
-        EOF to exit the program
-        :return: True
+        """Quits command interpreter with ctrl+d
+            Args:
+                line(args): input argument for quiting
+                    the terminal
         """
         return True
 
     def do_quit(self, line):
-        "Quit command to exit the program"
+        """Handles the 'quit' command
+        Args:
+            line(args): input argument for quiting
+            the terminal
+        """
         return True
 
 
