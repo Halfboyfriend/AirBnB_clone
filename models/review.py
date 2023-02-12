@@ -6,7 +6,7 @@ Defines the Review class
 from models.base_model import BaseModel
 
 
-class Amenity(BaseModel):
+class Review(BaseModel):
     """Represent a Review
        Attributes:
            place_id = empty string

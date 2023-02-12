@@ -6,7 +6,7 @@ Defines the Place class
 from models.base_model import BaseModel
 
 
-class Amenity(BaseModel):
+class Place(BaseModel):
     """Represent a Place
        Attributes:
             city_id (str): City id
