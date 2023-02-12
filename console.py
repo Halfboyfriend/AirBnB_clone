@@ -4,9 +4,7 @@ The console v: 0.0.1
 Contains the entry point of the command interpreter
 """
 import cmd
-import models
-import json
-from models import storage
+#from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -72,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         Eliminates empty lines.
         """
         return False
-    
+
 
     def do_EOF(self, line):
         """Quits command interpreter with ctrl+d
