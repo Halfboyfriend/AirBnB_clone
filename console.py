@@ -4,15 +4,76 @@ The console v: 0.0.1
 Contains the entry point of the command interpreter
 """
 import cmd
-# import models
-# import json
+import models
+import json
+from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """
     Custom console class
     """
-
     prompt = '(hbnb)'
+
+    def my_errors(self, line, num_of_args):
+
+        """Displays error messages to user
+                Args:
+                    line(any): gets user input using command line
+                    num_of_args(int): number of input arguments
+                Description:
+                    Displays output to the use based on
+                    the input commands.
+        """
+
+        classes = ["BaseModel", "User", "State", "City",
+                   "Amenity", "Place", "Review"]
+
+        msg = ["** class name missing **",
+               "** class doesn't exist **",
+               "** instance id missing **",
+               "** no instance found **",
+               "** attribute name missing **",
+               "** value missing **"
+               ]
+        if not line:
+            print(msg[0])
+            return 1
+        args = line.split()
+
+        if num_of_args >=1 and args[0] not in classes:
+            print(msg[1])
+            return 1
+        elif num_of_args == 1:
+            return 0
+
+        if num_of_args >= 2 and len(args) < 2:
+            print(msg[2])
+            return 1
+
+        dt = storage.all()
+
+        for i in range(len(args)):
+            if args[i][0] == '"':
+                args[i] = args[i].replace('"', "")
+        key = args[0] + '.' + args[1]
+
+        if num_of_args >= 2 and key not in dt:
+            print(msg[3])
+            return 1
+        elif num_of_args == 2:
+            return 0
+        if num_of_args >= 4 and len(args) < 3:
+            print(msg[4])
+            return 1
+        return 0
+
+    def handle_empty_line(self, line):
+        """
+        Eliminates empty lines.
+        """
+        return False
+    
+
     def do_EOF(self, line):
         """Quits command interpreter with ctrl+d
             Args:
