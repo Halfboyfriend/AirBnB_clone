@@ -10,7 +10,7 @@ footer{
     border-top: 1.5px solid #CCC;
     bottom: 0;
     display: flex;
-    position: absolute;
+    position: relative;
     text-align: center;
     justify-content: center;
     align-items: center;
